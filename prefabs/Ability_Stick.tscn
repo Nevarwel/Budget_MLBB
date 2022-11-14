@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/JoystickPack/joystick/textures/joystick_base_outline.png" type="Texture" id=1]
+[ext_resource path="res://assets/JoystickPack/joystick/textures/joystick_tip_arrows.png" type="Texture" id=2]
+[ext_resource path="res://scripts/UI Elements/Ability_Stick.gd" type="Script" id=3]
+[ext_resource path="res://assets/Stuff_I_stole_from_Google/shapes/smallcircle.png" type="Texture" id=4]
+
+[node name="Ability Stick" type="Control"]
+modulate = Color( 1, 1, 1, 0.509804 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -56.0
+margin_top = -56.0
+margin_right = 56.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( 40, 40 )
+script = ExtResource( 3 )
+clampzone_size = 55.0
+joystick_mode = 1
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color( 0.513726, 0.513726, 0.513726, 0.54902 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.4, 1.4 )
+rect_pivot_offset = Vector2( 40, 40 )
+texture = ExtResource( 4 )
+
+[node name="Base" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 1 )
+stretch_mode = 6
+
+[node name="Tip" type="TextureRect" parent="Base"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 50, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+stretch_mode = 6
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Cooldown" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -56.0
+margin_right = 24.0
+margin_bottom = 24.0
+rect_scale = Vector2( 1.4, 1.4 )
+value = 75.0
+texture_progress = ExtResource( 4 )
+fill_mode = 5

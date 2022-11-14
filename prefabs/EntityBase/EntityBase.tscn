@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://prefabs/EntityBase/EntityBase.gd" type="Script" id=1]
+[ext_resource path="res://assets/Stuff_I_stole_from_Google/shapes/square.png" type="Texture" id=2]
+[ext_resource path="res://assets/Stuff_I_stole_from_Google/progress_bars/Info_Bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/EntityBase/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Stuff_I_stole_from_Google/shapes/bigcircle.png" type="Texture" id=5]
+
+[node name="EntityBase" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 1 )
+sprite = NodePath("Sprite")
+animator = NodePath("AnimationPlayer")
+infobar = NodePath("Info_Bar")
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="Lancelot_Passive" type="Control" parent="Timers"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureProgress" type="TextureProgress" parent="Timers/Lancelot_Passive"]
+modulate = Color( 0.627451, 0.623529, 0.623529, 0.435294 )
+margin_left = -36.0
+margin_top = -36.0
+margin_right = 254.0
+margin_bottom = 254.0
+rect_scale = Vector2( 0.25, 0.25 )
+value = 75.0
+texture_progress = ExtResource( 5 )
+fill_mode = 5
+
+[node name="Cooldown" type="Timer" parent="Timers/Lancelot_Passive"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Info_Bar" parent="." instance=ExtResource( 3 )]
+margin_left = -53.0
+margin_top = -53.0
+margin_right = -53.0
+margin_bottom = -53.0
+
+[node name="Location" type="Position2D" parent="."]
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

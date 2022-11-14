@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://prefabs/char_projectile/Layla_a1.gd" type="Script" id=1]
+[ext_resource path="res://assets/Stuff_I_stole_from_Google/shapes/smallcircle.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.02
+
+[node name="Layla_a1" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource( 1 )
+tag = "layla_a1"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="HSprite" type="Sprite" parent="Hitbox"]
+modulate = Color( 0.188235, 0.482353, 0.717647, 1 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
