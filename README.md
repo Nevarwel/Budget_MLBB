@@ -1,2 +1,2 @@
 # Budget_MLBB
- A compilation of source code
+behold, my ancient bootleg MLBB project, featuring code smell and garbage architecture. 
